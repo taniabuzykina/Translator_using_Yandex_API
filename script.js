@@ -5,7 +5,7 @@ let translate = (text) => {
 
     let body = `key=${encodeURIComponent(key)}
                 &text=${encodeURIComponent(text)}
-                &lang=${encodeURIComponent('en-ru')}`;
+                &lang=${encodeURIComponent('en-de')}`;
 
     xhr.open('POST', 'https://translate.yandex.net/api/v1.5/tr.json/translate?', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
