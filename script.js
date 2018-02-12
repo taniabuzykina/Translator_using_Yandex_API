@@ -1,6 +1,3 @@
-window.onload = function(){
-    console.log("the form should be reset\n");
-    //.("inputarea").value='';
 let translate = (text) => {
     let xhr = new XMLHttpRequest();
     const key = 'trnsl.1.1.20180212T144108Z.a4abf848e52820a3.eee565c1f2668137e318bdd1d4e3787bfc0b3ba8';
