@@ -1,7 +1,7 @@
 let translate = (text) => {
     let transFrom = document.querySelector(".js-translate-from").value;
     let transTo = document.querySelector(".js-translate-to").value;
-    let transOption = transFrom+"-"+transTo;
+    let transOption = transFrom+'-'+transTo;
     let xhr = new XMLHttpRequest();
 
     const key = 'trnsl.1.1.20180212T170957Z.610dcf1db261e404.5f0ef5f921dd000987d5e71976c4dddb9a049940';
