@@ -9,14 +9,14 @@
         <div class="part-left">
             From:
             <select name="translate-from" id="">
-                <option value="eng">English</option>
+                <option value="en">English</option>
                 <option value="ge">German</option>
-                <option value="rus">Russian</option>
+                <option value="ru">Russian</option>
             </select>
             <br>
             <textarea autocomplete="off" class="js-input" name="inputarea" cols="30" rows="5"></textarea>
             <br>
-            <button class="submit">Translate</button>
+            <button class="submit" onclick="requestTranslate();">Translate</button>
             <p class="loading"></p>
         </div>
 

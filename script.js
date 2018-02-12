@@ -23,5 +23,7 @@ let translate = (text) => {
     xhr.send(body);
 };
 
-
-translate('my songs know what you did in the dark');
+let requestTranslate = () =>{
+    let inputText = document.querySelector(".js-input").value;
+    translate(inputText);
+};
