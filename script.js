@@ -1,22 +1,23 @@
 let translate = (text) => {
     let xhr = new XMLHttpRequest();
-    const key = 'trnsl.1.1.20180212T144108Z.a4abf848e52820a3.eee565c1f2668137e318bdd1d4e3787bfc0b3ba8';
+
+    const key = 'trnsl.1.1.20180212T170957Z.610dcf1db261e404.5f0ef5f921dd000987d5e71976c4dddb9a049940';
+
     let body = `key=${encodeURIComponent(key)}
-                &text=${encodeURIComponent(text)}
-                &lang=ru`;
+                &text=${encodeURIComponent('Hello world')}
+                &lang=${encodeURIComponent('en-ru')}`;
 
-    xhr.open('GET', 'https://translate.yandex.net', true);
+    xhr.open('POST', 'https://translate.yandex.net/api/v1.5/tr.json/translate?', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    xhr.send(body);
 
     xhr.onload = () => {
         if (this.status == 200) {
-            let response = JSON.parse(this.responseText);
+            let result = JSON.parse(this.responseText);
 
-            console.log("OK");
+            console.log(result.text);
         }
     };
+    xhr.send(body);
 };
 
 translate('hello from the other side');
