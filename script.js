@@ -1,3 +1,7 @@
+//let kinput = document.querySelector(".js-input");
+//console.log(kinput.value);
+//kinput.onkeypress = translate(kinput.value);
+
 let translate = (text) => {
     
     let transFrom = document.querySelector(".js-translate-from").value;
@@ -5,6 +9,7 @@ let translate = (text) => {
     if(transFrom===transTo)
         document.querySelector(".loading").innerHTML = "Languages are the same!";
     else {
+        document.querySelector(".loading").innerHTML = " ";
         let transOption = transFrom+'-'+transTo;
     
         let xhr = new XMLHttpRequest();
@@ -19,13 +24,16 @@ let translate = (text) => {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
         xhr.onload = function () {
+            console.log(transOption);
+            console.log("i'm on xhr.onload");
             if (this.status == 200) {
                 let result = JSON.parse(this.responseText);
                 let translate = result.text;
                 console.log(this.responseText);
                 let resText = document.querySelector(".js-result");
                 resText.innerHTML = translate;
-            } else console.log('There was an error');
+            } 
+            else console.log('There was an error');
         };
 
         xhr.send(body);
