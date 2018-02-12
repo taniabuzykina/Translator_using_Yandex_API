@@ -4,7 +4,7 @@ let translate = (text) => {
     const key = 'trnsl.1.1.20180212T170957Z.610dcf1db261e404.5f0ef5f921dd000987d5e71976c4dddb9a049940';
 
     let body = `key=${encodeURIComponent(key)}
-                &text=${encodeURIComponent(text)}
+                &text=${encodeURIComponent(toTranslate)}
                 &lang=${encodeURIComponent('en-ru')}`;
 
     xhr.open('POST', 'https://translate.yandex.net/api/v1.5/tr.json/translate?', true);
@@ -23,5 +23,8 @@ let translate = (text) => {
 
     xhr.send(body);
 };
+
+const translateBtn = document.querySelector('.js-translate');
+translateBtn.addEventListener('click', alert("you clicked on me!"));
 
 translate('hello from the other side');
