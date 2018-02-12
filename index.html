@@ -3,35 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style>
+        .form{
+            display: flex;
+        }    
+        .part-right{
+            margin-left: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="form">
-        <div class="part-top">
-            From:
-            <select class="js-translate-from" id="">
-                <option value="en">English</option>
-                <option value="de">German</option>
-                <option value="ru">Russian</option>
-            </select>
-            <br>
-            <textarea autocomplete="off" class="js-input" name="inputarea" cols="30" rows="5"></textarea>
-            <br>
-            <button class="js-translate-button">Translate</button>
-            <p class="loading"></p>
-        </div>
 
-        <div class="part-bottom">
-            To:
-            <select class="js-translate-to" id="">
+    <div class="form">
+        <div class="part-left">
+            From:
+            <select class="translate-from">
                 <option value="en">English</option>
                 <option value="de">German</option>
                 <option value="ru">Russian</option>
             </select>
             <br>
-            <textarea readonly autocomplete="off" name="outputarea" class="js-result" cols="30" rows="5" value=""></textarea>
-            <p>Переведено сервисом "Яндекс.Переводчик" <a href="http://translate.yandex.ru/">http://translate.yandex.ru/</a></p>
+            <textarea class="js-toTranslate" cols="30" rows="5"></textarea>
+            <br>
+            <button class="js-translate">Translate</button>
+            <p class="js-pending"></p>
         </div>
+        <div class="part-right">
+            To:
+            <select class="translate-to" id="">
+                <option value="en">English</option>
+                <option value="de">German</option>
+                <option value="ru">Russian</option>
+            </select>
+            <br>
+            <textarea class="js-result" readonly autocomplete="off" cols="30" rows="5"></textarea>
+        </div>
+       <!-- <p>Переведено сервисом "Яндекс.Переводчик <a href="http://translate.yandex.ru/">http://translate.yandex.ru/</a></p> -->
     </div>
+
     <script src="script.js"></script>
+
 </body>
 </html>
