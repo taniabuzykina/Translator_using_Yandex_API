@@ -16,7 +16,7 @@
             <br>
             <textarea name="" id="" cols="30" rows="5"></textarea>
             <br>
-            <button class="button">Translate</button>
+            <button class="submit">Translate</button>
             <p class="loading"></p>
         </div>
 
@@ -28,9 +28,12 @@
                 <option value="rus">Russian</option>
             </select>
             <br>
-            <textarea name="" id="" cols="30" rows="5"></textarea>
+            <textarea readonly name="" id="" cols="30" rows="5"></textarea>
             <p>Переведено сервисом "Яндекс.Переводчик" <a href="http://translate.yandex.ru/">http://translate.yandex.ru/</a></p>
         </div>
     </div>
+    <script src="script.js">
+        document.getElementsByClassName("form").reset();
+    </script>
 </body>
 </html>
