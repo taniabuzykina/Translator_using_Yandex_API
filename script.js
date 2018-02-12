@@ -1,15 +1,13 @@
-//let kinput = document.querySelector(".js-input");
-//console.log(kinput.value);
-//kinput.onkeypress = translate(kinput.value);
+//js-input.addEventListener('keydown', translate);
 
 let translate = (text) => {
-    
+    let statusOutput =  document.querySelector(".loading");
     let transFrom = document.querySelector(".js-translate-from").value;
     let transTo = document.querySelector(".js-translate-to").value;
     if(transFrom===transTo)
-        document.querySelector(".loading").innerHTML = "Languages are the same!";
+        statusOutput.innerHTML = "Languages are the same!";
     else {
-        document.querySelector(".loading").innerHTML = " ";
+        statusOutput.innerHTML = " ";
         let transOption = transFrom+'-'+transTo;
     
         let xhr = new XMLHttpRequest();
@@ -24,6 +22,7 @@ let translate = (text) => {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
         xhr.onload = function () {
+            statusOutput.innerHTML = "Loading";
             console.log(transOption);
             console.log("i'm on xhr.onload");
             if (this.status == 200) {
@@ -44,3 +43,6 @@ let requestTranslate = () =>{
     let inputText = document.querySelector(".js-input").value;
     translate(inputText);
 };
+
+let toTranslate = document.querySelector(".js-input");
+toTranslate.onkeypress =toTranslate.onkeydown = translate();
