@@ -9,22 +9,23 @@
     <div class="form">
         <div class="part-left">
             From:
-            <select name="translate-from" id="">
-                <option value="eng">English</option>
-                <option value="ge">German</option>
-                <option value="rus">Russian</option>
+            <select class="translate-from">
+                <option value="en">English</option>
+                <option value="de">German</option>
+                <option value="ru">Russian</option>
             </select>
             <br>
             <textarea class="js-toTranslate" cols="30" rows="5"></textarea>
             <button class="js-translate">Translate</button>
             <p class="loading"></p>
         </div>
+        <p class="js-pending"></p>
         <div class="part-right">
             To:
-            <select name=translate-to"" id="">
-                <option value="eng">English</option>
-                <option value="ge">German</option>
-                <option value="rus">Russian</option>
+            <select class="translate-to" id="">
+                <option value="en">English</option>
+                <option value="de">German</option>
+                <option value="ru">Russian</option>
             </select>
             <br>
             <textarea class="js-result" readonly autocomplete="off" cols="30" rows="5"></textarea>
