@@ -10,13 +10,14 @@ let translate = (text) => {
     xhr.open('POST', 'https://translate.yandex.net/api/v1.5/tr.json/translate?', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    xhr.onload = () => {
+    xhr.onload = function () {
         if (this.status == 200) {
             let result = JSON.parse(this.responseText);
 
-            console.log(result.text);
-        }
+            console.log(this.responseText);
+        } else console.log('There was an error');
     };
+
     xhr.send(body);
 };
 
