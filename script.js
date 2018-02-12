@@ -1,8 +1,7 @@
 let translate = () => {
     let langFrom = document.querySelector('.translate-from').value;
     let langTo = document.querySelector('.translate-to').value;
-    let langDuo = (langFrom == langTo) ? alert('Languages are the same!') : `${langFrom}-${langTo}`;
-    let loadingStatus = document.querySelector('.js-pending');
+    let langDuo = (langFrom === langTo) ? alert('Languages are the same!') : `${langFrom}-${langTo}`;
 
     let xhr = new XMLHttpRequest();
 
@@ -34,6 +33,7 @@ let translate = () => {
     xhr.send(body);
 };
 
+let loadingStatus = document.querySelector('.js-pending');
 let toTranslate = document.querySelector('.js-toTranslate');
 let translateBtn = document.querySelector('.js-translate');
 
