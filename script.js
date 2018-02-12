@@ -1,55 +1,41 @@
-//document.querySelector(".js-input").value = ' ';
-//document.querySelector(".js-result").value = ' ';
-
-let translate = (text) => {
+let translate = () => {
 
     let statusOutput =  document.querySelector(".loading");
     let transFrom = document.querySelector(".js-translate-from").value;
     let transTo = document.querySelector(".js-translate-to").value;
-
-    if(transFrom===transTo)
-        statusOutput.innerHTML = "Languages are the same!";
-    else {
-        let transOption = transFrom+'-'+transTo;
+    let langDuo = (transFrom == transTo) ? alert('Languages are the same!') : `${transFrom}-${transTo}`;
     
-        let xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
 
-        const key = 'trnsl.1.1.20180212T170957Z.610dcf1db261e404.5f0ef5f921dd000987d5e71976c4dddb9a049940';
+    const key = 'trnsl.1.1.20180212T170957Z.610dcf1db261e404.5f0ef5f921dd000987d5e71976c4dddb9a049940';
 
-        let body = `key=${encodeURIComponent(key)}
-                    &text=${encodeURIComponent(text)}
-                    &lang=${encodeURIComponent(transOption)}`;
+    let body = `key=${encodeURIComponent(key)}
+                &text=${encodeURIComponent(text)}
+                &lang=${encodeURIComponent(transOption)}`;
 
-        xhr.open('POST', 'https://translate.yandex.net/api/v1.5/tr.json/translate?', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.open('POST', 'https://translate.yandex.net/api/v1.5/tr.json/translate?', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-        xhr.onload = function () {
-                    statusOutput.innerHTML = "Loading";
-                    console.log(transOption);
-                    console.log("i'm on xhr.onload");
-           
-            if (this.status == 200) {
-                let result = JSON.parse(this.responseText);
-                let translate = result.text;
-                    console.log(this.responseText);
-                statusOutput.innerHTML = " ";
+    xhr.onloadstart  = function () {
+        statusOutput.innerHTML = "Loading...";
+    };
 
-                
-                let resText = document.querySelector(".js-result");
-                resText.innerHTML = translate;
-            } 
-            else console.log('There was an error');
-        };
+    xhr.onload = function () {
+            console.log(langDuo);
+        if (this.status == 200) {
+            statusOutput.innerHTML = "";
+            let result = JSON.parse(this.responseText);
+            let translatedText = result.text;
 
-        xhr.send(body);
-    }
+            let resText = document.querySelector('.js-result');
+            resText.innerHTML = translatedText;
+        } else
+            console.log('There was an error');
+    };
 };
 
-let requestTranslate = () =>{
-    let inputText = document.querySelector(".js-input").value;
-    translate(inputText);
-};
+let toTranslate = document.querySelector('.js-input');
+let translateBtn = document.querySelector('.js-translate-button');
 
-let toTranslate = document.querySelector(".js-input");
-//toTranslate.addEventListener('keydown', translate);
-toTranslate.onkeypress =toTranslate.onkeydown = translate;
+translateBtn.addEventListener('click', translate);
+toTranslate.addEventListener('keydown', translate);
